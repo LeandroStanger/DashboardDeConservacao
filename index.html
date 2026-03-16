@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <title>Dashboard de Conservação | Análise Avançada</title>
+</head>
+<body>
+    <header>
+        <h1>Dashboard de Conservação</h1>
+        <p class="subtitle">Análise populacional e tempo restante para extinção</p>
+    </header>
+
+    <main id="conteudo">
+        <!-- Painel de indicadores -->
+        <div class="dashboard">
+            <div class="indicator-card">
+                <span class="indicator-label"><i class="fas fa-paw"></i> Espécies monitoradas</span>
+                <span class="indicator-value" id="totalSpecies">0</span>
+            </div>
+            <div class="indicator-card">
+                <span class="indicator-label"><i class="fas fa-globe-americas"></i> População total</span>
+                <span class="indicator-value" id="totalPopulation">0</span>
+            </div>
+            <div class="indicator-card">
+                <span class="indicator-label"><i class="fas fa-hourglass-half"></i> Média de anos restantes</span>
+                <span class="indicator-value" id="avgYears">0</span>
+            </div>
+            <div class="indicator-card">
+                <span class="indicator-label"><i class="fas fa-exclamation-circle"></i> Espécies críticas</span>
+                <span class="indicator-value" id="criticalCount">0</span>
+            </div>
+        </div>
+
+        <!-- Gráfico de distribuição de risco -->
+        <div class="chart-section">
+            <h2><i class="fas fa-chart-pie"></i> Distribuição de Risco</h2>
+            <div class="chart-container">
+                <canvas id="riskChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Seção de Análises Originais -->
+        <div class="analysis-section">
+            <h2><i class="fas fa-clipboard-list"></i> Análises Originais</h2>
+            <div class="analysis-grid" id="originalAnalysis"></div>
+        </div>
+
+        <!-- Seção de Análises Adicionais -->
+        <div class="analysis-section">
+            <h2><i class="fas fa-chart-simple"></i> Análises Adicionais</h2>
+            <div class="analysis-grid" id="additionalAnalysis"></div>
+        </div>
+
+        <!-- Alerta de População Crítica -->
+        <div class="alert-section" id="criticalAlert">
+            <h3><i class="fas fa-exclamation-triangle"></i> População crítica: menos de 1000 indivíduos</h3>
+            <p>Espécies com população abaixo de 1000 indivíduos correm sério risco de extinção local. A baixa diversidade genética e a dificuldade de reprodução agravam a situação.</p>
+            <div id="criticalList" class="critical-list"></div>
+        </div>
+
+        <!-- Sistema de Exemplos Interativos -->
+        <div class="examples-section">
+            <h2><i class="fas fa-code"></i> Exemplos Interativos de Métodos JavaScript</h2>
+            <div class="methods-grid" id="methodsContainer"></div>
+        </div>
+
+        <!-- Filtros e Cards de Animais -->
+        <div class="controls">
+            <div class="search-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="search" placeholder="Buscar por nome..." class="search-input" aria-label="Buscar por nome">
+            </div>
+            <select id="biomaFilter" class="filter-select" aria-label="Filtrar por bioma">
+                <option value="todos">Todos os biomas</option>
+            </select>
+            <div class="status-filter">
+                <span class="status-label">Filtrar por risco:</span>
+                <label><input type="checkbox" value="Crítico" checked> Crítico</label>
+                <label><input type="checkbox" value="Alto" checked> Alto</label>
+                <label><input type="checkbox" value="Moderado" checked> Moderado</label>
+                <label><input type="checkbox" value="Baixo" checked> Baixo</label>
+            </div>
+            <button class="clear-filters-btn" id="clearFilters"><i class="fas fa-undo-alt"></i> Limpar filtros</button>
+        </div>
+
+        <div class="stats" aria-live="polite">
+            <span><i class="fas fa-list"></i> Total de espécies: <strong id="totalCount">0</strong></span>
+            <span><i class="fas fa-eye"></i> Espécies exibidas: <strong id="displayedCount">0</strong></span>
+        </div>
+
+        <div id="cardsContainer" class="cards-grid"></div>
+
+        <!-- Tabela Final de Análise -->
+        <div class="table-section">
+            <h2><i class="fas fa-table"></i> Tabela de Análise Completa</h2>
+            <div class="table-responsive">
+                <table id="analysisTable">
+                    <thead>
+                        <tr>
+                            <th data-sort="nome" aria-sort="none">Espécie <span class="sort-icon"></span></th>
+                            <th data-sort="bioma" aria-sort="none">Bioma <span class="sort-icon"></span></th>
+                            <th data-sort="quantidade" aria-sort="none">População <span class="sort-icon"></span></th>
+                            <th data-sort="anosRestantes" aria-sort="none">Anos restantes <span class="sort-icon"></span></th>
+                            <th data-sort="status" aria-sort="none">Status <span class="sort-icon"></span></th>
+                            <th data-sort="observacoes" aria-sort="none">Observações <span class="sort-icon"></span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                    <tfoot id="tableFooter"></tfoot>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
