@@ -106,22 +106,6 @@ O dashboard monitora 26 espécies distribuídas em diversos biomas brasileiros e
 - **CORS**: Por questões de segurança, ao abrir o arquivo diretamente (`file://`), alguns navegadores podem bloquear o carregamento do JSON. Utilize um servidor local para evitar esse problema.
 - **Hospedagem**: O projeto está otimizado para GitHub Pages.
 
-## 🐛 Possíveis Problemas Conhecidos
-
-- **Carregamento do JSON**: Se o arquivo `dados.json` não estiver acessível, a página pode não carregar os dados corretamente.
-- **Cálculo de anos restantes**: A projeção utiliza uma fórmula simplificada (população / perda anual). Em cenários reais, a dinâmica populacional é mais complexa.
-- **Dados simulados**: Os dados são educacionais e não refletem necessariamente os números exatos de cada espécie na natureza.
-
-## 📈 Melhorias Futuras (Sugestões)
-
-1. **Integração com API real** de dados de conservação (IUCN Red List, ICMBio)
-2. **Gráficos interativos** com Chart.js ou D3.js para visualização de tendências
-3. **Comparação entre espécies** lado a lado
-4. **Exportação de relatórios** em PDF ou CSV
-5. **Simulação de cenários** com diferentes taxas de perda
-6. **Localização/Internacionalização** (português/inglês)
-7. **Mapa de distribuição** das espécies por bioma
-
 ## 👤 Autor
 
 **Leandro Stanger**
